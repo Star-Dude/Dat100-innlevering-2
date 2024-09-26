@@ -1,7 +1,5 @@
 package no.hvl.dat100.tabeller;
 
-import java.util.Collections;
-
 public class Tabeller {
 	public static void main(String[] args) {
 		// a
