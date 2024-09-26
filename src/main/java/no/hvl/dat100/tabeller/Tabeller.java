@@ -59,9 +59,8 @@ public class Tabeller {
 		String tall = "";
 		
 		for (int i = 0; i < tabell.length; i++) {
-			tall += (i == 0 ? "[" + tabell[i] + ", " : (i != tabell.length - 1 ? tabell[i] + ", " : tabell[i] + "]" ));
+			tall += (i == 0 ? "[" + tabell[i] + ", " : (i != tabell.length - 1 ? tabell[i] + ", " : tabell[i] + "]")); // Bruker en ternary operator her istedet for en for loop, bare fordi jeg kan. Vet at det er uleselig
 		}
-
 		return tall;
 	}
 
@@ -72,7 +71,6 @@ public class Tabeller {
 		for (int nummer : tabell) {
 			sum += nummer;
 		}
-
 		return sum;
 	}
 
@@ -83,7 +81,6 @@ public class Tabeller {
 				return true;
 			}
 		}
-
 		return false;
 	}
 
@@ -94,7 +91,6 @@ public class Tabeller {
 				return i;
 			}
 		}
-
 		return -1;
 	}
 
@@ -124,10 +120,10 @@ public class Tabeller {
 	
 		for (int i = 0; i < tabell1.length; i++) {
 			sammensattTabell[i] = tabell1[i];
-
-			for (int j = 0; j < tabell2.length; j++) {
-				sammensattTabell[tabell1.length + i] = tabell2[i];
-			}
+		}
+		
+		for (int i = 0; i < tabell2.length; i++) {
+			sammensattTabell[tabell1.length + i] = tabell2[i];
 		}
 		return sammensattTabell;
 	}
