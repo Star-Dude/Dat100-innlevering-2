@@ -58,8 +58,8 @@ class MatriserEnhetsTests {
 	@Test
 	void testtilStreng() {
 		
-		assertEquals("1 2 3 \n4 5 6 \n7 8 9 \n",Matriser.tilStreng(a));
-		assertEquals("1 2 3 \n4 5 6 \n7 8 9 \n10 11 12 \n",Matriser.tilStreng(c));
+		assertEquals("1 2 3 \n4 5 6 \n7 8 9 \n", Matriser.tilStreng(a));
+		assertEquals("1 2 3 \n4 5 6 \n7 8 9 \n10 11 12 \n", Matriser.tilStreng(c));
 	}
 
 	@Test
@@ -83,7 +83,7 @@ class MatriserEnhetsTests {
 	void testSpeile() {
 		
 		int[][] speilet = { {1,4,7}, {2,5,8}, {3,6,9} };
-			
+
 		int[][] speile = Matriser.speile(a);
 		
 		assertFalse(speile == a);

@@ -29,7 +29,8 @@ public class Tabeller {
 
 		// f
 		System.out.println("\nOppgave f:");
-		int[] tabellF = {6, 4, 5, 8};
+		// int[] tabellF = { 6, 4, 5, 8 };
+		int[] tabellF = {6, 4, 1};
 		int[] nyTabell = reverser(tabellF); // kan også bare gjøre skrivUt(reverser(TabellF));, men det ble spesifisert at vi må returnere en *ny* tabell, så gjør det bare sånn
 		skrivUt(nyTabell);
 
@@ -51,17 +52,19 @@ public class Tabeller {
         for (int i = 0; i < tabell.length; i++) {
             System.out.printf("%d ", tabell[i]);
         }
+
 		System.out.println();
 	}
 
 	// b)
 	public static String tilStreng(int[] tabell) {
 		String tall = "";
-		
+
 		for (int i = 0; i < tabell.length; i++) {
-			tall += (i == 0 ? "[" + tabell[i] + ", " : (i != tabell.length - 1 ? tabell[i] + ", " : tabell[i] + "]")); // Bruker en ternary operator her istedet for en for loop, bare fordi jeg kan. Vet at det er uleselig
+			tall += (i == 0 && tabell.length != 1 ? tabell[i] + "," : (i != tabell.length - 1 ? tabell[i] + "," : tabell[i])); // Bruker en ternary operator her istedet for en for loop, bare fordi jeg kan. Vet at det er uleselig. Jeg beklager.
 		}
-		return tall;
+
+		return "[" + tall + "]";
 	}
 
 	// c)
@@ -71,6 +74,7 @@ public class Tabeller {
 		for (int nummer : tabell) {
 			sum += nummer;
 		}
+
 		return sum;
 	}
 
@@ -81,27 +85,38 @@ public class Tabeller {
 				return true;
 			}
 		}
+
 		return false;
 	}
 
 	// e)
 	public static int posisjonTall(int[] tabell, int tall) {
 		for (int i = 0; i < tabell.length; i++) {
-			if (tabell[i] == tall) {
+			if ( tabell[i] == tall) {
 				return i;
 			}
 		}
+
 		return -1;
 	}
 
 	// f)
-    public static int[] reverser(int[] tabell) { // kunne også brukt en for-loop som lager en ny array med index i som tabell.length - 1 - i, men å bytte om verdiene er mer effektivt fordi vi looper bare halvparten av gangene.
-        for (int i = 0; i < tabell.length / 2; i++) {
+    public static int[] reverser(int[] tabell) {
+		int[] nyTabell = new int[tabell.length];
+		
+		if (tabell.length == 0) { // Skal ikke lyve, denne koden er forferdelig med mange 'duct tape fixes', men synes det er morsomt å skrive.
+			return nyTabell;
+		}
+
+		nyTabell[tabell.length / 2] = tabell[tabell.length / 2];
+
+		for (int i = 0; i < tabell.length / 2; i++) { // bytter variabler istedet for å gå gjennom hver index med i, fordi jeg kan
             int temp = tabell[i];
-            tabell[i] = tabell[tabell.length - 1 - i];
-            tabell[tabell.length - 1 - i] = temp;
+            nyTabell[i] = tabell[(tabell.length - 1) - i];
+			nyTabell[(tabell.length - 1) - i] = temp;
         }
-        return tabell;
+
+        return nyTabell;
 	}
 
 	// g)
@@ -111,20 +126,22 @@ public class Tabeller {
 				return false;
 			}
 		}
+
 		return true;
 	}
 
 	// h)
 	public static int[] settSammen(int[] tabell1, int[] tabell2) {
 		int[] sammensattTabell = new int[tabell1.length + tabell2.length];
-	
+
 		for (int i = 0; i < tabell1.length; i++) {
 			sammensattTabell[i] = tabell1[i];
 		}
-		
+
 		for (int i = 0; i < tabell2.length; i++) {
 			sammensattTabell[tabell1.length + i] = tabell2[i];
 		}
+
 		return sammensattTabell;
 	}
 }

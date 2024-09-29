@@ -25,4 +25,3 @@ jobs:
       run: mvn --batch-mode --update-snapshots test -Dtest=TabellerEnhetsTests
     - name: Test Matriser
       run: mvn --batch-mode --update-snapshots test -Dtest=MatriserEnhetsTests
-    

@@ -13,7 +13,7 @@ class TabellerEnhetsTests {
 	@BeforeEach
 	public void initEach() {
 
-		tabell1 = new int[3];
+		tabell1 = new int[3]; // [1,4,6]
 		tabell1[0] = 1;
 		tabell1[1] = 4;
 		tabell1[2] = 6;
@@ -73,7 +73,7 @@ class TabellerEnhetsTests {
 	@Test
 	void testreverser() {
 
-		int[] tabell = { 6, 4, 1 };
+		int[] tabell = {6, 4, 1};
 
 		int[] reversert1 = Tabeller.reverser(tabell1);
 		int[] reversert2 = Tabeller.reverser(tabell2);
@@ -82,10 +82,10 @@ class TabellerEnhetsTests {
 		assertFalse(tabell1 == reversert1); // reverse must allocate new array
 		assertArrayEquals(tabell, reversert1);
 		
-		assertFalse(tabell2 == reversert2);
+		assertFalse(tabell2 == reversert2); // reverse must allocate new array
 		assertArrayEquals(tabell2, reversert2);
 		
-		assertFalse(tabell1 == reversert1);
+		assertFalse(tabell3 == reversert3); // reverse must allocate new array
 		assertArrayEquals(tabell3, reversert3);
 	}
 
