@@ -28,7 +28,7 @@ public class Matriser {
         // e
         System.out.println("\n\nOppgave e:");
         int[][] matriseE = { {1,2,3}, {4,5,6}, {7,8,9} }; 
-        skrivUt(speile(matriseE)); // {{1,4,7}, {2,5,8}, {3,6,9}}}}
+        skrivUt(speile(matriseE));  // {{1,4,7}, {2,5,8}, {3,6,9}}
     }
 
     // a)
@@ -36,7 +36,7 @@ public class Matriser {
         // Lag en matrise og skriv ut ved hjelp av to nøstede utvidede for-løkker
         for (int[] rad : matrise) {
             for (int liste : rad) {
-                System.out.print(liste + " "); // Skriver listene 
+                System.out.print(liste + " ");  // Skriver listene 
             }
             System.out.println();  // Lager ny linje pr. liste
         }
