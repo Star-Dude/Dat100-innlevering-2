@@ -94,33 +94,9 @@ public class Matriser {
         return true;
     }
 
-    // e)
-    // Dette var første forsøk, og jeg kom nærme, men manglet fortsatt å bytte siste element i første array med første element med siste array. Jeg implementerte en 'duct tape solution' for å fikse det, men jeg visste at jeg kunne gjøre bedre.
-
-    // public static int[][] speile(int[][] matrise) {
-    //     int[][] speilet = matrise;
-
-    //     for (int i = 0, j = 0; i < matrise.length - 1; i++) {
-    //         int temp = matrise[j + 1][i];
-    //         speilet[i+ 1][i] = matrise[j][i + 1];
-    //         speilet[j][i + 1] = temp;
-
-    //         System.out.printf("%d %d\n", j, i);
-    //         if (j++ == 2) {
-    //             j = 1;
-    //             i = 1;
-    //         }
-    //     }
-
-    //     int temp = matrise[0][2];
-    //     speilet[0][2] = matrise[2][0];
-    //     speilet[2][0] = temp;
-
-    //     return speilet;
-    // }
-    
+    // e
     public static int[][] speile(int[][] matrise) {
-        int[][] reverseMatrise = new int[matrise[0].length][matrise.length]; 
+        int[][] speiletMatrise = new int[matrise[0].length][matrise.length]; 
 
         for (int i = 0; i < matrise.length; i++) {
             // 1 4 7
@@ -130,12 +106,12 @@ public class Matriser {
             // [0 ]
             
             for (int j = 0; j < matrise[0].length; j++) {
-                System.out.printf("(col %d, row %d) = (col %d, row %d)\n", j, i, i, j);
-                reverseMatrise[j][i] = matrise[i][j];
+                // System.out.printf("(kolonne %d, rekke %d) = (kolonne %d, rekke %d)\n", j, i, i, j);
+                speiletMatrise[j][i] = matrise[i][j];
             }
         }
 
-        return reverseMatrise;
+        return speiletMatrise;
     }
 
     // f)
