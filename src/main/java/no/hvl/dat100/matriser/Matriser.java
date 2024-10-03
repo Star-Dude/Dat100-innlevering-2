@@ -32,10 +32,10 @@ public class Matriser {
 
 		// f
 		System.out.println("\nOppgave f:");
-		int[][] a = { {1, 3, 5, 7}, {2, 4, 6, 8}, {10, 11, 12, 13} };
-		int[][] b = { {1, 6, 2, 4}, {2, 3, 8, 4}, {3, 7, 5, 6} };
-
+		int[][] a = { {1, 2}, {3, 4} };
+		int[][] b = { {5, 6}, {7, 8} };
 		skrivUt(multipliser(a, b));
+
 	}
 
 	// a)
@@ -124,19 +124,37 @@ public class Matriser {
     }
 
 	// f)
+	public static int[][] multipliser(int[][] a, int[][] b) { // a[][]
+		int radALen = a.length; // Antall rader i matrise A
+		int kolALen = a[0].length; // Antall kolonner i matrise A (også antall rader i matrise B)
+		int radBLen = b.length; // Antall rader i matrise B
+		int kolBLen = b[0].length; // Antall kolonner i matrise B
+		
+		// Sjekker om matrisene kan multipliseres: antall kolonner i A må være likt antall rader i B
+		if (kolALen != radBLen) {
+			throw new IllegalArgumentException("Kan ikke multiplisere: antall kolonner i A må være likt antall rader i B.");
+		}
+		
+		// Initialiserer resultatmatrisen
+		int[][] c = new int[radALen][kolBLen];
 
-	public static int[][] multipliser(int[][] a, int[][] b) {
-		int[][] ny = new int[4][3];
-
-		for (int i = 0; i < a.length; i++) {
-			for (int j = 0; j < b.length; j++) {
-
-				for (int r = 0; r < ny.length; r++) {
-					ny[i][j] += a[i][r] * b[r][j];
+		// Utfører matrise-multiplikasjonen
+		for (int rowA = 0; rowA < radALen; rowA++) { // Itererer over hver rad i A
+			
+			for (int colB = 0; colB < kolBLen; colB++) { // Itererer over hver kolonne i B
+				int sum = 0;
+				
+				for (int rowB = 0; rowB < radBLen; rowB++) { // Itererer gjennom den felles dimensjonen (kolonner i A/rader i B)
+					sum += a[rowA][rowB] * b[rowB][colB]; // Punktprodukt mellom rad i A og kolonne i B
+					
+				// System.out.println(a[rowA][colB] * b[rowB][colB] + " = "  + b[rowB][colB] + " * " + a[rowA][rowB]);
 				}
+				// System.out.println("\n"+sum+"\n");
+				
+				c[rowA][colB] = sum; // Lagrer resultatet i produktmatrisen
 			}
 		}
-
-		return ny;
+		
+		return c;
 	}
 }
